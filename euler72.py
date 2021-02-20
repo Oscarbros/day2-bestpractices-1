@@ -1,6 +1,10 @@
 #!/usr/bin/python
 
 from math import ceil,sqrt
+# import line_profiler
+# profile = line_profiler.LineProfiler()
+from memory_profiler import profile
+
 @profile
 def gen_primes(n):
     l = range(2,n)
@@ -66,3 +70,24 @@ for i in range(2,m+1):
     fraq += fast_phi(i,primes)
 
 print(fraq)
+# profile_wrapper = profile(gen_primes)
+# profile_wrapper(1000)
+# profile.print_stats()
+
+'''When using line-profiler for gen_primes I would primarily look into line 14 
+and line 16. These lines are called often and take a lot of time'''
+
+'''When using line-profiler for factorize line 28, 29 and 32 get called the 
+most often and are time consuming so these could be optimized'''
+
+'''When using line-profiler for fast_phi it is mostly running factorize that
+is time consuming, however within this function line 57 and 58 are quite time
+consuming.'''
+
+
+
+
+
+
+
+
